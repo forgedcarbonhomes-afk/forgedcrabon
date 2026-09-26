@@ -19,9 +19,15 @@ doesn't exist yet.
 
 ## Target audience
 
-Any homeowner, renovator, or builder in Australia planning a new build,
-renovation, or extension — a broader audience than Forged Carbon's existing
-tiny-home/granny-flat customer base.
+**Phase 1 (this implementation): Queensland.** Any homeowner, renovator, or
+builder in Queensland planning a new build, renovation, or extension — a
+broader audience than Forged Carbon's existing tiny-home/granny-flat customer
+base, but scoped to the state the business can actually speak to with
+confidence right now, consistent with the "QLD-solid, interstate case-by-case"
+framing already used across the location pages and guides.
+
+Australia-wide expansion is an explicit future phase (see below), not part of
+this build.
 
 ## Service model
 
@@ -51,10 +57,10 @@ page slugs.
 Sections, in order:
 
 1. **Hero** — the pitch. Forged Carbon now sources and supplies building
-   materials for any home project, not just the Forge 12. Honest framing:
-   genuinely imported, WaterMark (plumbing) / SAA-RCM (electrical) certified
-   where legally required — not just "cheap," since compliance is
-   non-negotiable regardless of country of origin.
+   materials for any home project in Queensland, not just the Forge 12.
+   Honest framing: genuinely imported, WaterMark (plumbing) / SAA-RCM
+   (electrical) certified where legally required — not just "cheap," since
+   compliance is non-negotiable regardless of country of origin.
 2. **How it works** — a short, numbered explainer: tell us about your project
    → we put together a materials package → you get a quote → we supply. Sets
    the expectation that this is consultative, not instant checkout.
@@ -80,22 +86,21 @@ Differences from the existing contact form:
 - New **Category** field: Kitchen / Bathroom / Building Materials / Not sure
   yet — pre-sorts leads without needing a separate form per section
 - New **Project type** field: New build / Renovation / Extension
-- New **Location** field — a dropdown of Australian states/territories
-  (matching the existing `<select>` pattern used for "What are you planning
-  to use it for?" on the contact form), since this serves all of Australia,
-  not just QLD walkthrough bookings like the contact form assumes
+- New **Location** field — free-text "Suburb/Town" (matching the QLD-wide
+  scope of this phase; a dropdown becomes worthwhile once this expands
+  beyond one state)
 - Reuses the existing generic `/thank-you/` page as-is — not worth a
   materials-specific variant for this phase
 
 ## SEO / technical integration
 
-- **Title:** "Whole-House Building Materials — Kitchens, Bathrooms & More,
-  Supplied | Forged Carbon"
+- **Title:** "Whole-House Building Materials Queensland — Kitchens, Bathrooms
+  & More, Supplied | Forged Carbon"
 - **Meta description, canonical, OG tags:** following the same pattern as
-  every other page on the site.
+  every other page on the site, scoped to Queensland.
 - **Structured data:** `Service` schema only (matching the pattern already
   used on location pages — `provider` linked to the existing `#business`
-  entity, `areaServed: Australia`). **Deliberately no `Product`/`Offer`
+  entity, `areaServed: Queensland`). **Deliberately no `Product`/`Offer`
   schema** — that would imply specific purchasable items with real prices,
   which don't exist yet. Adding Product schema is an explicit trigger for a
   later phase, once real suppliers and pricing exist.
@@ -124,6 +129,9 @@ Differences from the existing contact form:
 
 ## Future phases (not this implementation)
 
+- Expand from Queensland to Australia-wide once QLD sourcing/demand is
+  proven — at that point, revisit the Location field (dropdown of states)
+  and the Service schema's `areaServed`.
 - Split category sections into dedicated `/materials/kitchens/`,
   `/materials/bathroom/`, `/materials/building-materials/` pages once real
   supplier relationships and product data exist.
