@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18285487994"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-18285487994');gtag('config','G-6KS001RR2S');</script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-18285487994');gtag('config','G-6KS001RR2S');gtag('config','G-EFYCVB1YBY');</script>
   <title>Whole-House Building Materials Queensland — Kitchens, Bathrooms &amp; More, Supplied | Forged Carbon</title>
   <meta name="description" content="Forged Carbon now sources and supplies building materials for any home project in Queensland — kitchens, bathroom fixtures and general building materials, imported and compliance-certified.">
   <meta name="keywords" content="building materials Queensland, kitchen supply QLD, bathroom fixtures Queensland, imported building materials Australia, whole house renovation materials QLD">
@@ -266,6 +266,12 @@
         .then(r => r.json())
         .then(json => {
           if (json.success) {
+            if (typeof gtag === 'function') {
+              gtag('event', 'materials_enquiry_submit', {
+                category: form.querySelector('select[name="category"]')?.value || 'unknown',
+                project_type: form.querySelector('select[name="project_type"]')?.value || 'unknown'
+              });
+            }
             const redirect = form.querySelector('input[name="redirect"]')?.value;
             if (redirect) { window.location.href = redirect; return; }
             alert.className = 'form-alert form-alert--success';
@@ -287,6 +293,29 @@
           if (btn) { btn.disabled = false; btn.innerHTML = btn.dataset.origText || 'Send Enquiry →'; }
         });
     });
+  });
+})();
+</script>
+
+<!-- Section-interest tracking for retargeting audiences -->
+<script>
+(function(){
+  if (!('IntersectionObserver' in window)) return;
+  const sections = { 'kitchens': 'view_kitchen_section', 'bathroom': 'view_bathroom_section', 'building-materials': 'view_building_materials_section' };
+  const seen = new Set();
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !seen.has(entry.target.id)) {
+        seen.add(entry.target.id);
+        if (typeof gtag === 'function') {
+          gtag('event', sections[entry.target.id], { page_location: window.location.href });
+        }
+      }
+    });
+  }, { threshold: 0.5 });
+  Object.keys(sections).forEach(id => {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
   });
 })();
 </script>
